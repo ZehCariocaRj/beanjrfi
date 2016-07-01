@@ -288,6 +288,7 @@ class AdminPage(resource.Resource):
             <td>ipAddr</td>
             <td>macadr</td>
             <td>cfc</td>
+            <td>csnum</td>
             <td>action</td>
         </tr>""" % request.getHeader('host')
 
@@ -302,6 +303,7 @@ class AdminPage(resource.Resource):
             ipaddr = str(nasdata['ipaddr'])
             macadr = str(nasdata['macadr'])
             cfc = str(nasdata['cfc'])
+            csnum = str(nasdata ['csnum'])
             ingamesn = ''
             if 'ingamesn' in nasdata:
                 ingamesn = str(nasdata['ingamesn'])
@@ -326,6 +328,7 @@ class AdminPage(resource.Resource):
                 <td>%s</td>
                 <td>%s</td>
                 <td>%s</td>
+                <td>%s</td>
             """ % (ingamesn,
                    gameid,
                    enabled,
@@ -334,7 +337,8 @@ class AdminPage(resource.Resource):
                    userid,
                    ipaddr, 
                    macadr,
-                   cfc)
+                   cfc,
+                   csnum)
             if gameid[:-1] + ":" + ipaddr in banned_list:
                 responsedata += """
                     <td>
